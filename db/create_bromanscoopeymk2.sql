@@ -1,7 +1,7 @@
 DROP TABLE IF EXISTS material;
 DROP TABLE IF EXISTS findspot;
 DROP TABLE IF EXISTS inscribed_monument;
-DROP TABLE IF EXISTS small_find_artfact;
+DROP TABLE IF EXISTS small_find_artefact;
 DROP TABLE IF EXISTS corpus;
 DROP TABLE IF EXISTS material_corpus;
 DROP TABLE IF EXISTS monument_serviceman;
@@ -13,7 +13,7 @@ DROP TABLE IF EXISTS unit;
 CREATE TABLE material (
 	MaterialID INTEGER PRIMARY KEY,
 	MonumentID INTEGER REFERENCES inscribed_monument,
-	ArtefactID INTEGER REFERENCES small_find_artfact,
+	ArtefactID INTEGER REFERENCES small_find_artefact,
 	FindSpotID INTEGER REFERENCES findspot,
 	MaterialSpecificFindspotNote TEXT,
 	DateFrom INTEGER, -- INTEGER YEAR - years are BCE
@@ -110,7 +110,7 @@ UPDATE inscribed_monument SET Portrait = NULL WHERE Portrait = '';
 UPDATE inscribed_monument SET Frieze = NULL WHERE Frieze = '';
 UPDATE inscribed_monument SET MonumentStyleType = NULL WHERE MonumentStyleType = '';
 
-CREATE TABLE small_find_artfact (
+CREATE TABLE small_find_artefact (
 	ArtefactID INTEGER PRIMARY KEY,
 	ArtefactType TEXT,
 	ArtefactStyle TEXT,
@@ -127,22 +127,22 @@ CREATE TABLE small_find_artfact (
 	SmallInscriptionTranslationSource TEXT
 );
 
-select 'smallfindmonumentsloaded', count(*) from small_find_artfact;
+select 'smallfindmonumentsloaded', count(*) from small_find_artefact;
 
-UPDATE small_find_artfact SET ArtefactID = NULL WHERE ArtefactID = '';
-UPDATE small_find_artfact SET ArtefactType = NULL WHERE ArtefactType = '';
-UPDATE small_find_artfact SET ArtefactStyle = NULL WHERE ArtefactStyle = '';
-UPDATE small_find_artfact SET ArtefactTypologyType = NULL WHERE ArtefactTypologyType = '';
-UPDATE small_find_artfact SET ArchaeologicalContextKnown = NULL WHERE ArchaeologicalContextKnown = '';
-UPDATE small_find_artfact SET ArchaeologicalContext = NULL WHERE ArchaeologicalContext = '';
-UPDATE small_find_artfact SET ExcavationReport = NULL WHERE ExcavationReport = '';
-UPDATE small_find_artfact SET Description = NULL WHERE Description = '';
-UPDATE small_find_artfact SET Gendered = NULL WHERE Gendered = '';
-UPDATE small_find_artfact SET Military = NULL WHERE Military = '';
-UPDATE small_find_artfact SET SmallInscription = NULL WHERE SmallInscription = '';
-UPDATE small_find_artfact SET CleanedSmallInscription = NULL WHERE CleanedSmallInscription = '';
-UPDATE small_find_artfact SET SmallInscriptionTranslation = NULL WHERE SmallInscriptionTranslation = '';
-UPDATE small_find_artfact SET SmallInscriptionTranslationSource = NULL WHERE SmallInscriptionTranslationSource = '';
+UPDATE small_find_artefact SET ArtefactID = NULL WHERE ArtefactID = '';
+UPDATE small_find_artefact SET ArtefactType = NULL WHERE ArtefactType = '';
+UPDATE small_find_artefact SET ArtefactStyle = NULL WHERE ArtefactStyle = '';
+UPDATE small_find_artefact SET ArtefactTypologyType = NULL WHERE ArtefactTypologyType = '';
+UPDATE small_find_artefact SET ArchaeologicalContextKnown = NULL WHERE ArchaeologicalContextKnown = '';
+UPDATE small_find_artefact SET ArchaeologicalContext = NULL WHERE ArchaeologicalContext = '';
+UPDATE small_find_artefact SET ExcavationReport = NULL WHERE ExcavationReport = '';
+UPDATE small_find_artefact SET Description = NULL WHERE Description = '';
+UPDATE small_find_artefact SET Gendered = NULL WHERE Gendered = '';
+UPDATE small_find_artefact SET Military = NULL WHERE Military = '';
+UPDATE small_find_artefact SET SmallInscription = NULL WHERE SmallInscription = '';
+UPDATE small_find_artefact SET CleanedSmallInscription = NULL WHERE CleanedSmallInscription = '';
+UPDATE small_find_artefact SET SmallInscriptionTranslation = NULL WHERE SmallInscriptionTranslation = '';
+UPDATE small_find_artefact SET SmallInscriptionTranslationSource = NULL WHERE SmallInscriptionTranslationSource = '';
 
 
 CREATE TABLE corpus (
@@ -299,6 +299,6 @@ SELECT
 	FROM material
 			JOIN findspot USING (FindSpotID)
 			JOIN inscribed_monument USING (MonumentID)
-			JOIN small_find_artfact USING (ArtefactID)
+			JOIN small_find_artefact USING (ArtefactID)
 			JOIN material_corpus USING (MaterialID)
 						WHERE isPrimaryReference IS NOT NULL
