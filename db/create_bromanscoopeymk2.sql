@@ -85,10 +85,13 @@ CREATE TABLE inscribed_monument (
 	Translation TEXT,
 	TranslationSource TEXT,
 	Decorated TEXT,
+	Pediment TEXT,
+	PedimentDetail TEXT,
+	Frieze TEXT,
+	Portrait TEXT,
+	InscriptionDetails TEXT,
 	LowerFieldDecoration TEXT,
 	LowerFieldDetail TEXT,
-	Portrait TEXT,
-	Frieze TEXT,
 	MonumentStyleType TEXT
 );
 
