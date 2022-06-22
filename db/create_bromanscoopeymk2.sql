@@ -1,5 +1,5 @@
 DROP TABLE IF EXISTS material;
-DROP TABLE IF EXISTS findspot;
+DROP TABLE IF EXISTS location;
 DROP TABLE IF EXISTS inscribed_monument;
 DROP TABLE IF EXISTS small_find_artefact;
 DROP TABLE IF EXISTS corpus;
@@ -9,13 +9,14 @@ DROP TABLE IF EXISTS legio_serviceman;
 DROP TABLE IF EXISTS military_status;
 DROP TABLE IF EXISTS unit;
 
-
 CREATE TABLE material (
 	MaterialID INTEGER PRIMARY KEY,
 	MonumentID INTEGER REFERENCES inscribed_monument,
 	ArtefactID INTEGER REFERENCES small_find_artefact,
-	FindSpotID INTEGER REFERENCES findspot,
-	MaterialSpecificFindspotNote TEXT,
+	LocationID INTEGER REFERENCES location,
+	Findspot TEXT,
+	FindspotCertainty TEXT,
+	FindspotChecked TEXT,
 	DateFrom INTEGER, -- INTEGER YEAR - years are BCE
 	DateTo INTEGER, -- INTEGER YEAR - years are BCE
 	DateNote TEXT,
@@ -31,8 +32,10 @@ select 'materialoaded', count(*) from material;
 UPDATE material SET MaterialID = NULL WHERE MaterialID = '';
 UPDATE material SET MonumentID = NULL WHERE MonumentID = '';
 UPDATE material SET ArtefactID = NULL WHERE ArtefactID = '';
-UPDATE material SET FindSpotID = NULL WHERE FindSpotID = '';
-UPDATE material SET MaterialSpecificFindSpotNote = NULL WHERE MaterialSpecificFindSpotNote = '';
+UPDATE material SET LocationID = NULL WHERE LocationID = '';
+UPDATE material SET Findspot = NULL WHERE Findspot = '';
+UPDATE material SET FindspotCertainty = NULL WHERE FindspotCertainty = '';
+UPDATE material SET FindspotChecked = NULL WHERE FindspotChecked = ";"
 UPDATE material SET DateFrom = NULL WHERE DateFrom = '';
 UPDATE material SET DateTo = NULL WHERE DateTo = '';
 UPDATE material SET DateNote = NULL WHERE DateNote = '';
@@ -45,8 +48,8 @@ UPDATE material SET Media = NULL WHERE Media = '';
 -- .mode csv
 -- .import ../original_source_data/monument.csv monument
 
-CREATE TABLE findspot (
-	FindSpotID INTEGER PRIMARY KEY,
+CREATE TABLE location (
+	LocationID INTEGER PRIMARY KEY,
 	RomanProvince TEXT,
 	AncientSite TEXT,
 	SpecificAncientLocation TEXT,
@@ -60,20 +63,20 @@ CREATE TABLE findspot (
 );
 
 -- .mode csv
--- .import ../original_source_data/findspot.csv findspot
+-- .import ../original_source_data/location.csv location
 
-UPDATE findspot SET RomanProvince = NULL WHERE RomanProvince = '';
-UPDATE findspot SET AncientSite = NULL WHERE AncientSite = '';
-UPDATE findspot SET SpecificAncientLocation = NULL WHERE SpecificAncientLocation = '';
-UPDATE findspot SET ModernSite = NULL WHERE ModernSite = '';
-UPDATE findspot SET SpecificModernLocation = NULL WHERE SpecificModernLocation = '';
-UPDATE findspot SET ExtraLocationNote = NULL WHERE ExtraLocationNote = '';
-UPDATE findspot SET LONGITUDE_epsg_4326 = NULL WHERE LONGITUDE_epsg_4326 = '';
-UPDATE findspot SET LATITUDE_epsg_4326 = NULL WHERE LATITUDE_epsg_4326 = '';
-UPDATE findspot SET Pleiades = NULL WHERE Pleiades = '';
-UPDATE findspot SET Trismegistos = NULL WHERE Trismegistos = '';
+UPDATE location SET RomanProvince = NULL WHERE RomanProvince = '';
+UPDATE location SET AncientSite = NULL WHERE AncientSite = '';
+UPDATE location SET SpecificAncientLocation = NULL WHERE SpecificAncientLocation = '';
+UPDATE location SET ModernSite = NULL WHERE ModernSite = '';
+UPDATE location SET SpecificModernLocation = NULL WHERE SpecificModernLocation = '';
+UPDATE location SET ExtraLocationNote = NULL WHERE ExtraLocationNote = '';
+UPDATE location SET LONGITUDE_epsg_4326 = NULL WHERE LONGITUDE_epsg_4326 = '';
+UPDATE location SET LATITUDE_epsg_4326 = NULL WHERE LATITUDE_epsg_4326 = '';
+UPDATE location SET Pleiades = NULL WHERE Pleiades = '';
+UPDATE location SET Trismegistos = NULL WHERE Trismegistos = '';
 
-select 'findspotsloaded', count(*) from findspot;
+select 'locationsloaded', count(*) from location;
 
 
 CREATE TABLE inscribed_monument (
@@ -118,8 +121,6 @@ CREATE TABLE small_find_artefact (
 	ArtefactType TEXT,
 	ArtefactStyle TEXT,
 	ArtefactTypologyType TEXT,
-	ArchaeologicalContextKnown TEXT,
-	ArchaeologicalContext TEXT,
 	ExcavationReport TEXT,
 	Description TEXT,
 	Gendered TEXT,
@@ -136,8 +137,6 @@ UPDATE small_find_artefact SET ArtefactID = NULL WHERE ArtefactID = '';
 UPDATE small_find_artefact SET ArtefactType = NULL WHERE ArtefactType = '';
 UPDATE small_find_artefact SET ArtefactStyle = NULL WHERE ArtefactStyle = '';
 UPDATE small_find_artefact SET ArtefactTypologyType = NULL WHERE ArtefactTypologyType = '';
-UPDATE small_find_artefact SET ArchaeologicalContextKnown = NULL WHERE ArchaeologicalContextKnown = '';
-UPDATE small_find_artefact SET ArchaeologicalContext = NULL WHERE ArchaeologicalContext = '';
 UPDATE small_find_artefact SET ExcavationReport = NULL WHERE ExcavationReport = '';
 UPDATE small_find_artefact SET Description = NULL WHERE Description = '';
 UPDATE small_find_artefact SET Gendered = NULL WHERE Gendered = '';
@@ -291,7 +290,7 @@ SELECT
 	ModernSite AS 'Modern_Find_Site',
 	SpecificModernLocation 'Modern_Provenience',
 	ExtraLocationNote AS 'General_Location_Note',
-	MaterialSpecificFindSpotNote AS 'Unique_Monument_Provenience_Note',
+	Findspot AS 'Material_Provenience_Note',
 	LATITUDE_epsg_4326 AS 'LAT',
 	LONGITUDE_epsg_4326 AS 'LONG',
 	Pleiades,
@@ -300,7 +299,7 @@ SELECT
 	DBInclusionReason,
 	Media
 	FROM material
-			JOIN findspot USING (FindSpotID)
+			JOIN location USING (LocationID)
 			JOIN inscribed_monument USING (MonumentID)
 			JOIN small_find_artefact USING (ArtefactID)
 			JOIN material_corpus USING (MaterialID)
