@@ -7,7 +7,7 @@ mkdir -p ../data
 sqlite3 BromansDBmk2.db -csv -header 'SELECT * FROM material ORDER BY MaterialID' > ../data/material.csv
 sqlite3 BromansDBmk2.db -csv -header 'SELECT * FROM inscribed_monument ORDER BY MonumentID' ../data/inscribed_monument.csv
 sqlite3 BromansDBmk2.db -csv -header 'SELECT * FROM small_find_artfact ORDER BY ArtefactID' ../data/small_find_artfact.csv
-sqlite3 BromansDBmk2.db -csv -header 'SELECT * FROM findspot ORDER BY FindSpotID' > ../data/findspot.csv
+sqlite3 BromansDBmk2.db -csv -header 'SELECT * FROM location ORDER BY LocationID' > ../data/location.csv
 sqlite3 BromansDBmk2.db -csv -header 'SELECT * FROM corpus ORDER BY CorpusName;' > ../data/corpus.csv
 sqlite3 BromansDBmk2.db -csv -header 'SELECT * FROM material_corpus ORDER BY MaterialCorpusID' > ../data/monument_corpus.csv
 sqlite3 BromansDBmk2.db -csv -header 'SELECT * FROM monument_serviceman ORDER BY MonumentServicemanID' > ../data/monument_serviceman.csv
