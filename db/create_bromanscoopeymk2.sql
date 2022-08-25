@@ -4,8 +4,8 @@ DROP TABLE IF EXISTS inscribed_monument;
 DROP TABLE IF EXISTS small_find_artefact;
 DROP TABLE IF EXISTS corpus;
 DROP TABLE IF EXISTS material_corpus;
-DROP TABLE IF EXISTS monument_serviceman;
-DROP TABLE IF EXISTS legio_serviceman;
+DROP TABLE IF EXISTS monument_individual;
+DROP TABLE IF EXISTS individual;
 DROP TABLE IF EXISTS military_status;
 DROP TABLE IF EXISTS unit;
 
@@ -25,7 +25,8 @@ CREATE TABLE inscribed_monument (
 	InscriptionDetails TEXT,
 	LowerFieldDecoration TEXT,
 	LowerFieldDetail TEXT,
-	MonumentStyleType TEXT
+	MonumentStyleType TEXT,
+	FromLatEpig TEXT
 );
 
 -- SELECT *
@@ -45,6 +46,7 @@ UPDATE inscribed_monument SET LowerFieldDetail = NULL WHERE LowerFieldDetail = '
 UPDATE inscribed_monument SET Portrait = NULL WHERE Portrait = '';
 UPDATE inscribed_monument SET Frieze = NULL WHERE Frieze = '';
 UPDATE inscribed_monument SET MonumentStyleType = NULL WHERE MonumentStyleType = '';
+UPDATE inscribed_monument SET FromLatEpig = NULL WHERE FromLatEpig = '';
 
 
 CREATE TABLE small_find_artefact (
@@ -127,7 +129,7 @@ CREATE TABLE material (
 	Media TEXT
 );
 
-select 'materialoaded', count(*) from material;
+select 'materialsloaded', count(*) from material;
 
 UPDATE material SET MaterialID = NULL WHERE MaterialID = '';
 UPDATE material SET MonumentID = NULL WHERE MonumentID = '';
@@ -156,7 +158,7 @@ CREATE TABLE corpus (
 --.mode csv
 --.import ../original_source_data/corpus.csv corpus
 
-select 'corpusloaded', count(*) from corpus;
+select 'corporaloaded', count(*) from corpus;
 
 
 CREATE TABLE material_corpus (
@@ -174,27 +176,27 @@ select 'referencesloaded', count(*) from material_corpus;
 
 UPDATE material_corpus SET isPrimaryReference = NULL WHERE isPrimaryReference = '';
 
-CREATE TABLE monument_serviceman (
-	  MonumentServicemanID NUMBER PRIMARY KEY,
-		ServicemanID INTEGER REFERENCES legio_serviceman,
+CREATE TABLE monument_individual (
+	  MonumentIndividualID NUMBER PRIMARY KEY,
+		IndividualID INTEGER REFERENCES individual,
 		MonumentID INTEGER REFERENCES inscribed_monument,
-		ServicemanReferencedAs TEXT,
-		PossibleDuplicateServicemanID INTEGER,
+		IndividualReferencedAs TEXT,
+		PossibleDuplicateIndividualID INTEGER,
 		SourceForDuplicateArgument TEXT
 );
 
--- ServicemanReferencedAs refers to how Serviceman is referred to: either AS commemorator,
+-- IndividualReferencedAs refers to how Serviceman is referred to: either AS commemorator,
 -- commemorated, both (erected during lifetime), administrator, or dedicant (sacral inscriptions)
--- PossibleDuplicateServicemanID records the ServicemanID of the individual which may be a duplicate of this certain MaterialID
+-- PossibleDuplicateIndividualID records the IndividualID of the individual which may be a duplicate of this certain MaterialID
 
 -- .mode csv
--- .import ../original_source_data/monument_serviceman.csv monument_serviceman
+-- .import ../original_source_data/monument_individual.csv monument_individual
 
-select 'monumentservicemenloaded', count(*) from monument_serviceman;
+select 'monumentservicemenloaded', count(*) from monument_individual;
 
-UPDATE monument_serviceman SET ServicemanReferencedAs = NULL WHERE ServicemanReferencedAs = '';
-UPDATE monument_serviceman SET PossibleDuplicateServicemanID = NULL WHERE PossibleDuplicateServicemanID = '';
-UPDATE monument_serviceman SET SourceForDuplicateArgument = NULL WHERE SourceForDuplicateArgument = '';
+UPDATE monument_individual SET IndividualReferencedAs = NULL WHERE IndividualReferencedAs = '';
+UPDATE monument_individual SET PossibleDuplicateIndividualID = NULL WHERE PossibleDuplicateIndividualID = '';
+UPDATE monument_individual SET SourceForDuplicateArgument = NULL WHERE SourceForDuplicateArgument = '';
 
 
 CREATE TABLE unit (
@@ -229,39 +231,43 @@ UPDATE military_status SET SecondOfficeCertainty = NULL WHERE SecondOfficeCertai
 UPDATE military_status SET VeteranStatus = NULL WHERE VeteranStatus = '';
 UPDATE military_status SET VeteranStatusCertainty = NULL WHERE VeteranStatusCertainty = '';
 
-CREATE TABLE legio_serviceman (
-  ServicemanID INTEGER PRIMARY KEY,
+CREATE TABLE individual (
+  IndividualID INTEGER PRIMARY KEY,
 	Name TEXT,
-	DefiniteServiceman TEXT,
-	UnitID INTEGER REFERENCES unit,
-	LiklihoodOfUnitAttribution TEXT,
-  MilitaryStatusID INTEGER REFERENCES military_status,
+	Sex TEXT,
+	Age TEXT,
 	Tribe TEXT,
 	OriginProvince TEXT,
 	OriginSettlement TEXT,
 	OriginCertainty TEXT,
 	TribeSettlementNote TEXT,
-	ServicemanNote TEXT
+	ServicemanNote TEXT,
+	Serviceman TEXT,
+	UnitID INTEGER REFERENCES unit,
+	LiklihoodOfUnitAttribution TEXT,
+  MilitaryStatusID INTEGER REFERENCES military_status
 );
--- 'ServicemanID' is used to refer to the Legio VII serviceman recorded upon the inscription. There can be multiple per MaterialID
--- DefiniteServiceman refers to whether or not they were a soldier/milites, not necessarily Legio VII. For that, see .monument
+-- 'IndividualID' is used to refer to the Legio VII serviceman recorded upon the inscription. There can be multiple per MaterialID
+-- Serviceman refers to whether or not they were a soldier/milites, not necessarily Legio VII. For that, see .monument
 
 -- .mode csv
--- .import ../original_source_data/legio_serviceman.csv legio_serviceman
+-- .import ../original_source_data/individual.csv individual
 
-select 'legionariesloaded', count(*) from legio_serviceman;
+select 'individualsloaded', count(*) from individual;
 
-UPDATE legio_serviceman SET Name = NULL WHERE Name = '';
-UPDATE legio_serviceman SET DefiniteServiceman = NULL WHERE DefiniteServiceman = '';
-UPDATE legio_serviceman SET UnitID = NULL WHERE UnitID = '';
-UPDATE legio_serviceman SET LiklihoodOfUnitAttribution = NULL WHERE LiklihoodOfUnitAttribution = '';
-UPDATE legio_serviceman SET Tribe = NULL WHERE Tribe = '';
-UPDATE legio_serviceman SET MilitaryStatusID = NULL WHERE MilitaryStatusID = '';
-UPDATE legio_serviceman SET OriginProvince = NULL WHERE OriginProvince = '';
-UPDATE legio_serviceman SET OriginSettlement = NULL WHERE OriginSettlement = '';
-UPDATE legio_serviceman SET OriginCertainty = NULL WHERE OriginCertainty = '';
-UPDATE legio_serviceman SET ServicemanNote = NULL WHERE ServicemanNote = '';
-UPDATE legio_serviceman SET TribeSettlementNote = NULL WHERE TribeSettlementNote = '';
+UPDATE individual SET Name = NULL WHERE Name = '';
+UPDATE individual SET Serviceman = NULL WHERE Serviceman = '';
+UPDATE individual SET UnitID = NULL WHERE UnitID = '';
+UPDATE individual SET LiklihoodOfUnitAttribution = NULL WHERE LiklihoodOfUnitAttribution = '';
+UPDATE individual SET Tribe = NULL WHERE Tribe = '';
+UPDATE individual SET MilitaryStatusID = NULL WHERE MilitaryStatusID = '';
+UPDATE individual SET OriginProvince = NULL WHERE OriginProvince = '';
+UPDATE individual SET OriginSettlement = NULL WHERE OriginSettlement = '';
+UPDATE individual SET OriginCertainty = NULL WHERE OriginCertainty = '';
+UPDATE individual SET ServicemanNote = NULL WHERE ServicemanNote = '';
+UPDATE individual SET TribeSettlementNote = NULL WHERE TribeSettlementNote = '';
+UPDATE individual SET Sex = NULL WHERE Sex = ''; 
+UPDATE individual SET Age = NULL WHERE Age = '';
 
 -- Below are the various views created so that some information from various tables can be found in the same view
 DROP VIEW IF EXISTS all_material_with_location;
