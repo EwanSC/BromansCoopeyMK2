@@ -11,6 +11,7 @@ DROP TABLE IF EXISTS unit;
 
 CREATE TABLE inscribed_monument (
 	MonumentID INTEGER PRIMARY KEY,
+	MaterialID INTEGER REFERENCES material,
 	MonumentType TEXT,
 	MentionsUnit TEXT,
 	Inscription TEXT,
@@ -28,6 +29,9 @@ CREATE TABLE inscribed_monument (
 	MonumentStyleType TEXT,
 	FromLatEpig TEXT
 );
+
+.mode csv
+.import --skip 1 ../original_source_data/inscribed_monument.csv inscribed_monument
 
 -- SELECT *
 --   FROM monument JOIN inscribed_monument USING (monumentID);
@@ -64,6 +68,9 @@ CREATE TABLE small_find_artefact (
 	SmallInscriptionTranslationSource TEXT
 );
 
+.mode csv
+.import --skip 1 ../original_source_data/small_find_artefact.csv small_find_artefact
+
 select 'smallfindmonumentsloaded', count(*) from small_find_artefact;
 
 UPDATE small_find_artefact SET ArtefactID = NULL WHERE ArtefactID = '';
@@ -94,8 +101,8 @@ CREATE TABLE location (
 	Trismegistos TEXT
 );
 
--- .mode csv
--- .import ../original_source_data/location.csv location
+.mode csv
+.import --skip 1 ../original_source_data/location.csv location
 
 UPDATE location SET RomanProvince = NULL WHERE RomanProvince = '';
 UPDATE location SET AncientSite = NULL WHERE AncientSite = '';
@@ -129,6 +136,9 @@ CREATE TABLE material (
 	Media TEXT
 );
 
+.mode csv
+.import --skip 1 ../original_source_data/material.csv monument
+
 select 'materialsloaded', count(*) from material;
 
 UPDATE material SET MaterialID = NULL WHERE MaterialID = '';
@@ -147,34 +157,32 @@ UPDATE material SET MaterialNote = NULL WHERE MaterialNote = '';
 UPDATE material SET DBInclusionReason = NULL WHERE DBInclusionReason = '';
 UPDATE material SET Media = NULL WHERE Media = '';
 
--- .mode csv
--- .import ../original_source_data/monument.csv monument
-
 
 CREATE TABLE corpus (
 	CorpusName TEXT PRIMARY KEY
 );
 
---.mode csv
---.import ../original_source_data/corpus.csv corpus
+.mode csv
+.import --skip 1 ../original_source_data/corpus.csv corpus
 
 select 'corporaloaded', count(*) from corpus;
 
 
 CREATE TABLE material_corpus (
   MaterialCorpusID INTEGER PRIMARY KEY,
-	MaterialID INTEGER REFERENCES material NOT NULL,
-	CorpusName TEXT NOT NULL REFERENCES corpus,
-	Reference TEXT NOT NULL,
+	MaterialID INTEGER REFERENCES material,
+	CorpusName TEXT REFERENCES corpus,
+	Reference TEXT,
 	isPrimaryReference TEXT
 );
 
--- .mode csv
--- .import ../original_source_data/material_corpus.csv material_corpus
+.mode csv
+.import --skip 1 ../original_source_data/material_corpus.csv material_corpus
 
 select 'referencesloaded', count(*) from material_corpus;
 
 UPDATE material_corpus SET isPrimaryReference = NULL WHERE isPrimaryReference = '';
+
 
 CREATE TABLE monument_individual (
 	  MonumentIndividualID NUMBER PRIMARY KEY,
@@ -189,8 +197,8 @@ CREATE TABLE monument_individual (
 -- commemorated, both (erected during lifetime), administrator, or dedicant (sacral inscriptions)
 -- PossibleDuplicateIndividualID records the IndividualID of the individual which may be a duplicate of this certain MaterialID
 
--- .mode csv
--- .import ../original_source_data/monument_individual.csv monument_individual
+.mode csv
+.import --skip 1 ../original_source_data/monument_individual.csv monument_individual
 
 select 'monumentservicemenloaded', count(*) from monument_individual;
 
@@ -204,8 +212,8 @@ CREATE TABLE unit (
 	UnitTitle TEXT
 );
 
--- .mode csv
--- .import ../original_source_data/unit.csv unit
+.mode csv
+.import --skip 1 ../original_source_data/unit.csv unit
 
 select 'unitsloaded', count(*) from unit;
 
@@ -219,8 +227,8 @@ CREATE TABLE military_status (
 	VeteranStatusCertainty TEXT
 );
 
--- .mode csv
--- .import ../original_source_data/military_status.csv military_status
+.mode csv
+.import --skip 1 ../original_source_data/military_status.csv military_status
 
 select 'officesloaded', count(*) from military_status;
 
@@ -250,8 +258,8 @@ CREATE TABLE individual (
 -- 'IndividualID' is used to refer to the Legio VII serviceman recorded upon the inscription. There can be multiple per MaterialID
 -- Serviceman refers to whether or not they were a soldier/milites, not necessarily Legio VII. For that, see .monument
 
--- .mode csv
--- .import ../original_source_data/individual.csv individual
+.mode csv
+.import --skip 1 ../original_source_data/individual.csv individual
 
 select 'individualsloaded', count(*) from individual;
 
