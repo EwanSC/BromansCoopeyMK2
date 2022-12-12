@@ -9,12 +9,85 @@ DROP TABLE IF EXISTS individual;
 DROP TABLE IF EXISTS military_status;
 DROP TABLE IF EXISTS unit;
 
+CREATE TABLE material (
+	MaterialID INTEGER PRIMARY KEY,
+	ArtefactID INTEGER REFERENCES small_find_artefact,
+	MonumentID INTEGER REFERENCES inscribed_monument,
+	LocationID INTEGER REFERENCES location,
+	Findspot TEXT,
+	FindspotCertainty TEXT,
+	FindspotChecked TEXT,
+	DateFrom INTEGER, -- INTEGER YEAR - years are BCE
+	DateTo INTEGER, -- INTEGER YEAR - years are BCE
+	DateNote TEXT,
+	Materiality TEXT,
+	ModernHolding TEXT,
+	HoldingData TEXT,
+	MaterialNote TEXT,
+	DBInclusionReason TEXT,
+	Media TEXT
+);
+
+.mode csv
+.import --skip 1 ../original_source_data/material.csv monument
+
+select 'materialsloaded', count(*) from material;
+
+UPDATE material SET MaterialID = NULL WHERE MaterialID = '';
+UPDATE material SET MonumentID = NULL WHERE MonumentID = '';
+UPDATE material SET ArtefactID = NULL WHERE ArtefactID = '';
+UPDATE material SET LocationID = NULL WHERE LocationID = '';
+UPDATE material SET Findspot = NULL WHERE Findspot = '';
+UPDATE material SET FindspotCertainty = NULL WHERE FindspotCertainty = '';
+UPDATE material SET FindspotChecked = NULL WHERE FindspotChecked = '';
+UPDATE material SET DateFrom = NULL WHERE DateFrom = '';
+UPDATE material SET DateTo = NULL WHERE DateTo = '';
+UPDATE material SET DateNote = NULL WHERE DateNote = '';
+UPDATE material SET ModernHolding = NULL WHERE ModernHolding = '';
+UPDATE material SET HoldingData = NULL WHERE HoldingData = '';
+UPDATE material SET MaterialNote = NULL WHERE MaterialNote = '';
+UPDATE material SET DBInclusionReason = NULL WHERE DBInclusionReason = '';
+UPDATE material SET Media = NULL WHERE Media = '';
+UPDATE material SET Materiality = NULL WHERE Materiality = ''; 
+
+CREATE TABLE location (
+	LocationID INTEGER PRIMARY KEY,
+	RomanProvince TEXT,
+	AncientSite TEXT,
+	SpecificAncientLocation TEXT,
+	ModernSite TEXT,
+	SpecificModernLocation TEXT,
+	ExtraLocationNote TEXT,
+	LONGITUDE_epsg_4326 NUMBER,
+	LATITUDE_epsg_4326 NUMBER,
+	Pleiades TEXT,
+	Trismegistos TEXT
+);
+
+.mode csv
+.import --skip 1 ../original_source_data/location.csv location
+
+UPDATE location SET RomanProvince = NULL WHERE RomanProvince = '';
+UPDATE location SET AncientSite = NULL WHERE AncientSite = '';
+UPDATE location SET SpecificAncientLocation = NULL WHERE SpecificAncientLocation = '';
+UPDATE location SET ModernSite = NULL WHERE ModernSite = '';
+UPDATE location SET SpecificModernLocation = NULL WHERE SpecificModernLocation = '';
+UPDATE location SET ExtraLocationNote = NULL WHERE ExtraLocationNote = '';
+UPDATE location SET LONGITUDE_epsg_4326 = NULL WHERE LONGITUDE_epsg_4326 = '';
+UPDATE location SET LATITUDE_epsg_4326 = NULL WHERE LATITUDE_epsg_4326 = '';
+UPDATE location SET Pleiades = NULL WHERE Pleiades = '';
+UPDATE location SET Trismegistos = NULL WHERE Trismegistos = '';
+
+select 'locationsloaded', count(*) from location;
+
+
 CREATE TABLE inscribed_monument (
 	MonumentID INTEGER PRIMARY KEY,
 	MaterialID INTEGER REFERENCES material,
 	MonumentType TEXT,
 	MentionsUnit TEXT,
 	Inscription TEXT,
+	CleanedInscriptionConservative TEXT,
 	CleanedInscription TEXT,
 	Translation TEXT,
 	TranslationSource TEXT,
@@ -33,14 +106,12 @@ CREATE TABLE inscribed_monument (
 .mode csv
 .import --skip 1 ../original_source_data/inscribed_monument.csv inscribed_monument
 
--- SELECT *
---   FROM monument JOIN inscribed_monument USING (monumentID);
-
 select 'inscribedmonumentsloaded', count(*) from inscribed_monument;
 
 UPDATE inscribed_monument SET MonumentID = NULL WHERE MonumentID = '';
 UPDATE inscribed_monument SET MonumentType = NULL WHERE MonumentType = '';
 UPDATE inscribed_monument SET Inscription = NULL WHERE Inscription = '';
+UPDATE inscribed_monument SET CleanedInscriptionConservative = NULL WHERE CleanedInscriptionConservative = '';
 UPDATE inscribed_monument SET CleanedInscription = NULL WHERE CleanedInscription = '';
 UPDATE inscribed_monument SET Translation = NULL WHERE Translation = '';
 UPDATE inscribed_monument SET TranslationSource = NULL WHERE TranslationSource = '';
@@ -86,80 +157,9 @@ UPDATE small_find_artefact SET CleanedSmallInscription = NULL WHERE CleanedSmall
 UPDATE small_find_artefact SET SmallInscriptionTranslation = NULL WHERE SmallInscriptionTranslation = '';
 UPDATE small_find_artefact SET SmallInscriptionTranslationSource = NULL WHERE SmallInscriptionTranslationSource = '';
 
-
-CREATE TABLE location (
-	LocationID INTEGER PRIMARY KEY,
-	RomanProvince TEXT,
-	AncientSite TEXT,
-	SpecificAncientLocation TEXT,
-	ModernSite TEXT,
-	SpecificModernLocation TEXT,
-	ExtraLocationNote TEXT,
-	LONGITUDE_epsg_4326 NUMBER,
-	LATITUDE_epsg_4326 NUMBER,
-	Pleiades TEXT,
-	Trismegistos TEXT
-);
-
-.mode csv
-.import --skip 1 ../original_source_data/location.csv location
-
-UPDATE location SET RomanProvince = NULL WHERE RomanProvince = '';
-UPDATE location SET AncientSite = NULL WHERE AncientSite = '';
-UPDATE location SET SpecificAncientLocation = NULL WHERE SpecificAncientLocation = '';
-UPDATE location SET ModernSite = NULL WHERE ModernSite = '';
-UPDATE location SET SpecificModernLocation = NULL WHERE SpecificModernLocation = '';
-UPDATE location SET ExtraLocationNote = NULL WHERE ExtraLocationNote = '';
-UPDATE location SET LONGITUDE_epsg_4326 = NULL WHERE LONGITUDE_epsg_4326 = '';
-UPDATE location SET LATITUDE_epsg_4326 = NULL WHERE LATITUDE_epsg_4326 = '';
-UPDATE location SET Pleiades = NULL WHERE Pleiades = '';
-UPDATE location SET Trismegistos = NULL WHERE Trismegistos = '';
-
-select 'locationsloaded', count(*) from location;
-
-
-CREATE TABLE material (
-	MaterialID INTEGER PRIMARY KEY,
-	ArtefactID INTEGER REFERENCES small_find_artefact,
-	MonumentID INTEGER REFERENCES inscribed_monument,
-	LocationID INTEGER REFERENCES location,
-	Findspot TEXT,
-	FindspotCertainty TEXT,
-	FindspotChecked TEXT,
-	DateFrom INTEGER, -- INTEGER YEAR - years are BCE
-	DateTo INTEGER, -- INTEGER YEAR - years are BCE
-	DateNote TEXT,
-	ModernHolding TEXT,
-	HoldingData TEXT,
-	MaterialNote TEXT,
-	DBInclusionReason TEXT,
-	Media TEXT
-);
-
-.mode csv
-.import --skip 1 ../original_source_data/material.csv monument
-
-select 'materialsloaded', count(*) from material;
-
-UPDATE material SET MaterialID = NULL WHERE MaterialID = '';
-UPDATE material SET MonumentID = NULL WHERE MonumentID = '';
-UPDATE material SET ArtefactID = NULL WHERE ArtefactID = '';
-UPDATE material SET LocationID = NULL WHERE LocationID = '';
-UPDATE material SET Findspot = NULL WHERE Findspot = '';
-UPDATE material SET FindspotCertainty = NULL WHERE FindspotCertainty = '';
-UPDATE material SET FindspotChecked = NULL WHERE FindspotChecked = '';
-UPDATE material SET DateFrom = NULL WHERE DateFrom = '';
-UPDATE material SET DateTo = NULL WHERE DateTo = '';
-UPDATE material SET DateNote = NULL WHERE DateNote = '';
-UPDATE material SET ModernHolding = NULL WHERE ModernHolding = '';
-UPDATE material SET HoldingData = NULL WHERE HoldingData = '';
-UPDATE material SET MaterialNote = NULL WHERE MaterialNote = '';
-UPDATE material SET DBInclusionReason = NULL WHERE DBInclusionReason = '';
-UPDATE material SET Media = NULL WHERE Media = '';
-
-
 CREATE TABLE corpus (
-	CorpusName TEXT PRIMARY KEY
+	CorpusName TEXT PRIMARY KEY,
+	FullCorpusName TEXT
 );
 
 .mode csv
@@ -167,6 +167,7 @@ CREATE TABLE corpus (
 
 select 'corporaloaded', count(*) from corpus;
 
+UPDATE corpus SET FullCorpusName = NULL WHERE FullCorpusName = '';
 
 CREATE TABLE material_corpus (
   MaterialCorpusID INTEGER PRIMARY KEY,
@@ -189,6 +190,7 @@ CREATE TABLE monument_individual (
 		IndividualID INTEGER REFERENCES individual,
 		MonumentID INTEGER REFERENCES inscribed_monument,
 		IndividualReferencedAs TEXT,
+		RelationToDeceased TEXT,
 		PossibleDuplicateIndividualID INTEGER,
 		SourceForDuplicateArgument TEXT
 );
@@ -205,7 +207,46 @@ select 'monumentservicemenloaded', count(*) from monument_individual;
 UPDATE monument_individual SET IndividualReferencedAs = NULL WHERE IndividualReferencedAs = '';
 UPDATE monument_individual SET PossibleDuplicateIndividualID = NULL WHERE PossibleDuplicateIndividualID = '';
 UPDATE monument_individual SET SourceForDuplicateArgument = NULL WHERE SourceForDuplicateArgument = '';
+UPDATE monument_individual SET RelationToDeceased = NULL WHERE RelationToDeceased = '';
 
+
+CREATE TABLE individual (
+  IndividualID INTEGER PRIMARY KEY,
+	Name TEXT,
+	Sex TEXT,
+	Age TEXT,
+	Tribe TEXT,
+	OriginProvince TEXT,
+	OriginSettlement TEXT,
+	OriginCertainty TEXT,
+	TribeSettlementNote TEXT,
+	Serviceman TEXT,
+	ServicemanNote TEXT,
+	UnitID INTEGER REFERENCES unit,
+	LiklihoodOfUnitAttribution TEXT,
+  MilitaryStatusID INTEGER REFERENCES military_status
+);
+-- 'IndividualID' is used to refer to the Legio VII serviceman recorded upon the inscription. There can be multiple per MaterialID
+-- Serviceman refers to whether or not they were a soldier/milites, not necessarily Legio VII. For that, see .monument
+
+.mode csv
+.import --skip 1 ../original_source_data/individual.csv individual
+
+select 'individualsloaded', count(*) from individual;
+
+UPDATE individual SET Name = NULL WHERE Name = '';
+UPDATE individual SET Serviceman = NULL WHERE Serviceman = '';
+UPDATE individual SET UnitID = NULL WHERE UnitID = '';
+UPDATE individual SET LiklihoodOfUnitAttribution = NULL WHERE LiklihoodOfUnitAttribution = '';
+UPDATE individual SET Tribe = NULL WHERE Tribe = '';
+UPDATE individual SET MilitaryStatusID = NULL WHERE MilitaryStatusID = '';
+UPDATE individual SET OriginProvince = NULL WHERE OriginProvince = '';
+UPDATE individual SET OriginSettlement = NULL WHERE OriginSettlement = '';
+UPDATE individual SET OriginCertainty = NULL WHERE OriginCertainty = '';
+UPDATE individual SET ServicemanNote = NULL WHERE ServicemanNote = '';
+UPDATE individual SET TribeSettlementNote = NULL WHERE TribeSettlementNote = '';
+UPDATE individual SET Sex = NULL WHERE Sex = ''; 
+UPDATE individual SET Age = NULL WHERE Age = '';
 
 CREATE TABLE unit (
 	UnitID INTEGER PRIMARY KEY,
@@ -239,47 +280,9 @@ UPDATE military_status SET SecondOfficeCertainty = NULL WHERE SecondOfficeCertai
 UPDATE military_status SET VeteranStatus = NULL WHERE VeteranStatus = '';
 UPDATE military_status SET VeteranStatusCertainty = NULL WHERE VeteranStatusCertainty = '';
 
-CREATE TABLE individual (
-  IndividualID INTEGER PRIMARY KEY,
-	Name TEXT,
-	Sex TEXT,
-	Age TEXT,
-	Tribe TEXT,
-	OriginProvince TEXT,
-	OriginSettlement TEXT,
-	OriginCertainty TEXT,
-	TribeSettlementNote TEXT,
-	ServicemanNote TEXT,
-	Serviceman TEXT,
-	UnitID INTEGER REFERENCES unit,
-	LiklihoodOfUnitAttribution TEXT,
-  MilitaryStatusID INTEGER REFERENCES military_status
-);
--- 'IndividualID' is used to refer to the Legio VII serviceman recorded upon the inscription. There can be multiple per MaterialID
--- Serviceman refers to whether or not they were a soldier/milites, not necessarily Legio VII. For that, see .monument
-
-.mode csv
-.import --skip 1 ../original_source_data/individual.csv individual
-
-select 'individualsloaded', count(*) from individual;
-
-UPDATE individual SET Name = NULL WHERE Name = '';
-UPDATE individual SET Serviceman = NULL WHERE Serviceman = '';
-UPDATE individual SET UnitID = NULL WHERE UnitID = '';
-UPDATE individual SET LiklihoodOfUnitAttribution = NULL WHERE LiklihoodOfUnitAttribution = '';
-UPDATE individual SET Tribe = NULL WHERE Tribe = '';
-UPDATE individual SET MilitaryStatusID = NULL WHERE MilitaryStatusID = '';
-UPDATE individual SET OriginProvince = NULL WHERE OriginProvince = '';
-UPDATE individual SET OriginSettlement = NULL WHERE OriginSettlement = '';
-UPDATE individual SET OriginCertainty = NULL WHERE OriginCertainty = '';
-UPDATE individual SET ServicemanNote = NULL WHERE ServicemanNote = '';
-UPDATE individual SET TribeSettlementNote = NULL WHERE TribeSettlementNote = '';
-UPDATE individual SET Sex = NULL WHERE Sex = ''; 
-UPDATE individual SET Age = NULL WHERE Age = '';
-
 -- Below are the various views created so that some information from various tables can be found in the same view
-DROP VIEW IF EXISTS all_material_with_location;
-CREATE VIEW all_material_with_location AS
+DROP VIEW IF EXISTS all_materials_with_location;
+CREATE VIEW all_materials_with_location AS
 SELECT
 	MaterialID,
 	MonumentID,
@@ -290,6 +293,7 @@ SELECT
 	ArtefactStyle,
 	ArtefactTypologyType,
 	MonumentType,
+	Materiality,
 	Inscription,
 	Translation,
 	TranslationSource AS 'Source_of_Translation',

@@ -1,1 +1,1 @@
-IndividualID,Name,Sex,Age,Tribe,OriginProvince,OriginSettlement,OriginCertainty,TribeSettlementNote,ServicemanNote,Serviceman,UnitID,LiklihoodOfUnitAttribution,MilitaryStatusID
+IndividualID,Name,Sex,Age,Tribe,OriginProvince,OriginSettlement,OriginCertainty,TribeSettlementNote,Serviceman,ServicemanNote,UnitID,LiklihoodOfUnitAttribution,MilitaryStatusID
