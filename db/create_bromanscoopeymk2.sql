@@ -1,13 +1,13 @@
-DROP TABLE IF EXISTS material;
 DROP TABLE IF EXISTS location;
 DROP TABLE IF EXISTS inscribed_monument;
 DROP TABLE IF EXISTS small_find_artefact;
-DROP TABLE IF EXISTS corpus;
 DROP TABLE IF EXISTS material_corpus;
 DROP TABLE IF EXISTS monument_individual;
 DROP TABLE IF EXISTS individual;
 DROP TABLE IF EXISTS military_status;
 DROP TABLE IF EXISTS unit;
+DROP TABLE IF EXISTS corpus;
+DROP TABLE IF EXISTS material;
 
 CREATE TABLE material (
 	MaterialID INTEGER PRIMARY KEY,
@@ -17,19 +17,20 @@ CREATE TABLE material (
 	Findspot TEXT,
 	FindspotCertainty TEXT,
 	FindspotChecked TEXT,
-	DateFrom INTEGER, -- INTEGER YEAR - years are BCE
-	DateTo INTEGER, -- INTEGER YEAR - years are BCE
+	DateFrom INTEGER,
+	DateTo INTEGER,
 	DateNote TEXT,
 	Materiality TEXT,
 	ModernHolding TEXT,
 	HoldingData TEXT,
+	Publication TEXT,
 	MaterialNote TEXT,
 	DBInclusionReason TEXT,
 	Media TEXT
 );
 
 .mode csv
-.import --skip 1 ../original_source_data/material.csv monument
+.import --skip 1 ../original_source_data/material.csv material
 
 select 'materialsloaded', count(*) from material;
 
@@ -49,6 +50,7 @@ UPDATE material SET MaterialNote = NULL WHERE MaterialNote = '';
 UPDATE material SET DBInclusionReason = NULL WHERE DBInclusionReason = '';
 UPDATE material SET Media = NULL WHERE Media = '';
 UPDATE material SET Materiality = NULL WHERE Materiality = ''; 
+UPDATE material SET Publication = NULL WHERE Publication = ''; 
 
 CREATE TABLE location (
 	LocationID INTEGER PRIMARY KEY,
@@ -97,6 +99,7 @@ CREATE TABLE inscribed_monument (
 	Frieze TEXT,
 	Portrait TEXT,
 	InscriptionDetails TEXT,
+	InscriptionBorder TEXT,
 	LowerFieldDecoration TEXT,
 	LowerFieldDetail TEXT,
 	MonumentStyleType TEXT,
@@ -122,6 +125,7 @@ UPDATE inscribed_monument SET Portrait = NULL WHERE Portrait = '';
 UPDATE inscribed_monument SET Frieze = NULL WHERE Frieze = '';
 UPDATE inscribed_monument SET MonumentStyleType = NULL WHERE MonumentStyleType = '';
 UPDATE inscribed_monument SET FromLatEpig = NULL WHERE FromLatEpig = '';
+UPDATE inscribed_monument SET InscriptionBorder = NULL WHERE InscriptionBorder = '';
 
 
 CREATE TABLE small_find_artefact (
