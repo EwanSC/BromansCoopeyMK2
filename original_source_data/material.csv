@@ -1,2 +1,2 @@
-MaterialID,ArtefactID,MonumentID,LocationID,Findspot,FindspotCertainty,FindspotChecked,DateFrom,DateTo,DateNote,Materiality,ModernHolding,HoldingData,Publication,MaterialNote,DBInclusionReason,Media
-1,,1,1,,,,18,19,checked by EDH,,Museo Archeologico Nazionale (Cividale del Friuli),,first mentioned as part of Danieli collection in Zadar in 1772,,military activity in province,http://lupa.at/21501/photos/1
+MaterialID,ArtefactID,MonumentID,LocationID,Findspot,FindspotCertainty,FindspotChecked,DateFrom,DateTo,DateChecked,DateNote,Materiality,ModernHolding,HoldingData,Publication,MaterialNote,DBInclusionReason,Media
+1,,1,1,,,,18,19,,checked by EDH,,Museo Archeologico Nazionale (Cividale del Friuli),,first mentioned as part of Danieli collection in Zadar in 1772,,military activity in province,http://lupa.at/21501/photos/1

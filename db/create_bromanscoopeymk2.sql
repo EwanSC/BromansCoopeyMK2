@@ -19,6 +19,7 @@ CREATE TABLE material (
 	FindspotChecked TEXT,
 	DateFrom INTEGER,
 	DateTo INTEGER,
+	DateChecked INTEGER,
 	DateNote TEXT,
 	Materiality TEXT,
 	ModernHolding TEXT,
@@ -51,6 +52,7 @@ UPDATE material SET DBInclusionReason = NULL WHERE DBInclusionReason = '';
 UPDATE material SET Media = NULL WHERE Media = '';
 UPDATE material SET Materiality = NULL WHERE Materiality = ''; 
 UPDATE material SET Publication = NULL WHERE Publication = ''; 
+UPDATE material SET DateChecked = NULL WHERE DateChecked = ''; 
 
 CREATE TABLE location (
 	LocationID INTEGER PRIMARY KEY,
