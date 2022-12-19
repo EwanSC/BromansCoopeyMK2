@@ -64,6 +64,8 @@ CREATE TABLE location (
 	ExtraLocationNote TEXT,
 	LONGITUDE_epsg_4326 NUMBER,
 	LATITUDE_epsg_4326 NUMBER,
+	SiteLONGITUDE_epsg_4326 NUMBER,
+	SiteLATITUDE_epsg_4326 NUMBER,
 	Pleiades TEXT,
 	Trismegistos TEXT
 );
@@ -81,6 +83,8 @@ UPDATE location SET LONGITUDE_epsg_4326 = NULL WHERE LONGITUDE_epsg_4326 = '';
 UPDATE location SET LATITUDE_epsg_4326 = NULL WHERE LATITUDE_epsg_4326 = '';
 UPDATE location SET Pleiades = NULL WHERE Pleiades = '';
 UPDATE location SET Trismegistos = NULL WHERE Trismegistos = '';
+UPDATE location SET SiteLONGITUDE_epsg_4326 = NULL WHERE SiteLONGITUDE_epsg_4326 = '';
+UPDATE location SET SiteLATITUDE_epsg_4326 = NULL WHERE SiteLATITUDE_epsg_4326 = '';
 
 select 'locationsloaded', count(*) from location;
 
@@ -105,7 +109,8 @@ CREATE TABLE inscribed_monument (
 	LowerFieldDecoration TEXT,
 	LowerFieldDetail TEXT,
 	MonumentStyleType TEXT,
-	FromLatEpig TEXT
+	FromLatEpig TEXT,
+	EDCSTags TEXT
 );
 
 .mode csv
@@ -127,8 +132,8 @@ UPDATE inscribed_monument SET Portrait = NULL WHERE Portrait = '';
 UPDATE inscribed_monument SET Frieze = NULL WHERE Frieze = '';
 UPDATE inscribed_monument SET MonumentStyleType = NULL WHERE MonumentStyleType = '';
 UPDATE inscribed_monument SET FromLatEpig = NULL WHERE FromLatEpig = '';
-UPDATE inscribed_monument SET InscriptionBorder = NULL WHERE InscriptionBorder = '';
-
+UPDATE inscribed_monument SET InscriptionBorder = NULL WHERE InscriptionBorder  = '';
+UPDATE inscribed_monument SET EDCSTags = NULL WHERE EDCSTags = '';
 
 CREATE TABLE small_find_artefact (
 	ArtefactID INTEGER PRIMARY KEY,
