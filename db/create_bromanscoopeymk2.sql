@@ -61,6 +61,7 @@ CREATE TABLE location (
 	SpecificAncientLocation TEXT,
 	ModernSite TEXT,
 	SpecificModernLocation TEXT,
+	UncleanedSiteLocation TEXT,
 	ExtraLocationNote TEXT,
 	LONGITUDE_epsg_4326 NUMBER,
 	LATITUDE_epsg_4326 NUMBER,
@@ -85,6 +86,7 @@ UPDATE location SET Pleiades = NULL WHERE Pleiades = '';
 UPDATE location SET Trismegistos = NULL WHERE Trismegistos = '';
 UPDATE location SET SiteLONGITUDE_epsg_4326 = NULL WHERE SiteLONGITUDE_epsg_4326 = '';
 UPDATE location SET SiteLATITUDE_epsg_4326 = NULL WHERE SiteLATITUDE_epsg_4326 = '';
+UPDATE location SET UncleanedSiteLocation = NULL WHERE UncleanedSiteLocation = '';
 
 select 'locationsloaded', count(*) from location;
 
