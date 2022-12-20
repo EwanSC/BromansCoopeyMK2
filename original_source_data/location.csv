@@ -5,7 +5,7 @@ LocationID,RomanProvince,AncientSite,SpecificAncientLocation,ModernSite,Specific
 4,Dalmatia,Burnum,,,,Burnum,,16.0181762,44.0183606,,,https://pleiades.stoa.org/places/197184,www.trismegistos.org/place/29387
 5,Dalmatia,Iader,,Zadar,,Zadar / Iader,,15.232136,44.1186078,,,https://pleiades.stoa.org/places/197312,www.trismegistos.org/place/28796
 6,Dalmatia,Burnum,Ninia,Knin,,Knin / Burnum,,16.199433,44.04085,,,https://pleiades.stoa.org/places/197410,www.trismegistos.org/place/29311
-7,Dalmatia,Bigeste,,Hardomilje,,Hardomilje / Bigeste,,17.5493918,43.1575578,,,https://pleiades.stoa.org/places/197167,https://www.trismegistos.org/place/36069
+7,Dalmatia,Bigeste,,Hardomilje,,Hardomilje / Bigeste,,17.5493918,43.1575578,,,https://pleiades.stoa.org/places/197167,www.trismegistos.org/place/36069
 8,Dalmatia,Andetrium,,Gornji Muć,,Gornji Muc / Andetrium,,16.4940794,43.6871481,,,https://pleiades.stoa.org/places/197115,www.trismegistos.org/place/29420
 9,Dalmatia,Bigeste,,Ljubuški,,Ljubuski / Mlade / Bigeste,,17.540558,43.1904758,,,https://pleiades.stoa.org/places/197167,www.trismegistos.org/place/29496
 10,Dalmatia,Narona,,Vid,,Vid / Narona,,17.6258524,43.0804139,,,https://pleiades.stoa.org/places/197400,www.trismegistos.org/place/16527
@@ -15,7 +15,7 @@ LocationID,RomanProvince,AncientSite,SpecificAncientLocation,ModernSite,Specific
 14,Dalmatia,Bigeste,,,,Bigeste,,17.528889,43.182222,,,https://pleiades.stoa.org/places/197167,www.trismegistos.org/place/29496
 15,Dalmatia,Corinium,,Karin Gornji,,Karin Gornji / Corinium,,15.6335444,44.1358546,,,https://pleiades.stoa.org/places/197225,www.trismegistos.org/place/29319
 16,Dalmatia,Municipium Malvesatium,,Čačak,,Cacak / Malvesiatium,,20.3501125,43.8913319,,,https://pleiades.stoa.org/places/207263,www.trismegistos.org/place/29589
-17,Dalmatia,Asseria,,Podgrađe,,Podgrade / Asseria,,15.669073,44.0203427,,,https://pleiades.stoa.org/places/197145,www.trismegistos.org/place/28793
+17,Dalmatia,Asseria,,Podgrađe,,Podgrade / Asseria,,15.669073,44.0203427,15.680565,44.0176335,https://pleiades.stoa.org/places/197145,www.trismegistos.org/place/28793
 18,Dalmatia,Doclea,,Podgorica,,Duklja / Duklje / Rusevine / Doclea,,19.2654984,42.4686384,,,https://pleiades.stoa.org/places/481808,www.trismegistos.org/place/15780
 19,Dalmatia,Osinium,,Sinj,,Sinj / Osinium,,16.6365238,43.7015963,,,https://pleiades.stoa.org/places/197423,www.trismegistos.org/place/43192
 20,Dalmatia,Promona,,Tepljuh,,Tepljuh / Promona,,16.2085222,43.8933717,,,https://pleiades.stoa.org/places/197458,www.trismegistos.org/place/29309
@@ -28,50 +28,50 @@ LocationID,RomanProvince,AncientSite,SpecificAncientLocation,ModernSite,Specific
 27,Dalmatia,Scardona,,Skradin,,Skradin / Scardona,,15.923372,43.8178655,,,https://pleiades.stoa.org/places/197502,www.trismegistos.org/place/28797
 28,Dalmatia,Tilurium,,Vojnić Sinjski,,Vojnic Sinjski / Tilurium,,16.6948645,43.6138233,,,https://pleiades.stoa.org/places/197552,www.trismegistos.org/place/29459
 29,Dalmatia,Aenona,,Nin,,Nin / Aenona,,15.1840255,44.2430736,,,https://pleiades.stoa.org/places/197094,www.trismegistos.org/place/29423
-30,Dalmatia,Arba,,Otok Rab,,"Rab, Otok / Arba",,14.7346385,44.7756866,,,https://pleiades.stoa.org/places/197135,www.trismegistos.org/place/29452
-31,Dalmatia,Burnum,,Karlovac,,Karlovac / Karlstadt / Burnum,,15.5486303,45.4892522,,,https://pleiades.stoa.org/places/197184,https://www.trismegistos.org/place/29389
+30,Dalmatia,Arba,,Rab,,"Rab, Otok / Arba",,14.7346385,44.7756866,,,https://pleiades.stoa.org/places/197135,www.trismegistos.org/place/29452
+31,Dalmatia,Burnum,,Karlovac,,Karlovac / Karlstadt / Burnum,,15.5486303,45.4892522,,,https://pleiades.stoa.org/places/197184,www.trismegistos.org/place/29389
 32,Dalmatia,Clissa,,Klis,,Klis / Clissa,,16.5237544,43.5587998,,,,www.trismegistos.org/place/29373
-33,Dalmatia,Delminium,,,,Tomislavgrad / Duvno / Zupanjac / Delminium,,17.2303272,43.7165551,,,,
-34,Dalmatia,Hrvace,,,,Hrvace,,16.6189503,43.7559711,,,,
-35,Dalmatia,Municipium Magnum,,,,Ruzic / Balijna Glavica / Municipium Magnum,,16.2663102,43.8199367,,,,
-36,Dalmatia,Novae,,,,Runovici / Runovic / Novae,,17.2354538,43.38889,,,,
-37,Dalmatia,Risinium,,,,Risan / Risano / Risinium,,18.6955649,42.5149792,,,,
-38,Dalmatia,Siculi,,,,Veli Bijac / Bijaci / Bijaca / Siculi,,16.2982386,43.5555172,,,,
-39,Dalmatia,Spalatum,,,,Split / Spalatum,,16.4399659,43.5116383,,,,
-40,Dalmatia,Tragurium,,,,Trogir / Tragurium,,16.2499724,43.516687,,,,
-41,Dalmatia,Asseria,,,,Asseria,,15.6690296,44.0099747,,,,
-42,Dalmatia,Asseria,,,,Benkovac / Asseria,,15.6125528,44.0333509,,,,
-43,Dalmatia,Bigeste,,,,Veljaci / Bigeste,,17.4433546,43.2362774,,,,
-44,Dalmatia,Burnum,,,,Mokro Polje / Burnum,,16.1106256,44.1009583,,,,
-45,Dalmatia,Burnum,,,,Puljane / Pugliane / Burnum,,16.032173,43.9743322,,,,
-46,Dalmatia,Burnum,,,,Strmca / Stermizza / Burnum,,14.1999864,45.8315229,,,,
-47,Dalmatia,Curictae,,,,"Krk, Otok / Curictae",,14.5496681,45.0901955,,,,
-48,Dalmatia,Diluntum,,,,Dubrava / Diluntum,,17.958448,43.078729,,,,
-49,Dalmatia,Doboj,,,,Doboj,,18.0847183,44.7313612,,,,
-50,Dalmatia,Dobropoljci,,,,Dobropoljci,,15.8108052,43.9936545,,,,
-51,Dalmatia,Domavium,,,,Gradina / Domavium,,18.4200399,43.2078027,,,,
-52,Dalmatia,Fulfinum,,,,Omisalj / Fulfinum,,14.5575259,45.2120215,,,,
-53,Dalmatia,Gracac,,,,Gracac,,15.8465272,44.2985234,,,,
-54,Dalmatia,Gradcina,,,,Gradcina,,17.7097222,45.2286111,,,,
-55,Dalmatia,Gromile,,,,Gromile,,17.1008778,44.2850487,,,,
-56,Dalmatia,Iader,,,,Galovac / Iader,,15.3944579,44.0724549,,,,
-57,Dalmatia,Issa,,,,Vis / Issa,,16.1834976,43.0599322,,,,
-58,Dalmatia,Jesenice,,,,"Krug, Jesenice",,16.6289431,43.4592662,,,,
-59,Dalmatia,Kapitul,,,,Kapitul - Knin,,16.1984439,44.0312408,,,,
-60,Dalmatia,Kosijerevo,,,,Kosijerevo,,18.4606607,42.7968403,,,,
-61,Dalmatia,Krinj,,,,Krinj,,16.644463,43.7451993,,,,
-62,Dalmatia,Mratovo / Burnum,,,,Mratovo / Burnum,,16.0454253,43.9559481,,,,
-63,Dalmatia,Murter,,,,Murter,,15.6085778,43.799601,,,,
-64,Dalmatia,Narona,,,,Metkovic / Narona,,17.6519631,43.0536158,,,,
-65,Dalmatia,Oneum,,,,Omis / Almissa / Oneum / Onaeum,,16.6913309,43.4447124,,,,
-66,Dalmatia,Pharia,,,,Hvar / Lesina / Pharia,,16.5564721,43.1739813,,,,
-67,Dalmatia,Punta Kriza,,,,Punta Kriza,,14.4929765,44.6382141,,,,
-68,Dalmatia,Rider,,,,Danilo Gornje / Rider,,16.0292749,43.706309,,,,
-69,Dalmatia,Roski slap,,,,Roski slap,,15.9750672,43.903745,,,,
-70,Dalmatia,Salona,,,,Manastirine / Salona,,16.4828374,43.5420376,,,,
-71,Dalmatia,Tarsatica,,,,Trsat / Tersatto / Tarsatica,,14.464428,45.3308704,,,,
-72,Dalmatia,Tragurium,,,,Seget Donji / Tragurium,,16.2272015,43.5179953,,,,
-73,Dalmatia,Uzdolje,,,,Uzdolje,,16.1966494,43.9386349,,,,
-74,Dalmatia,Vagan,,,,Vagan,,17.1746449,44.1539086,,,,
-75,Dalmatia,Varvaria,,,,Bribir / Bribirska Glavica / Varvaria,,15.8398106,43.9214921,,,,
-76,Dalmatia,Velika Kladusa,,,,Velika Kladusa,,15.8070634,45.1854105,,,,
+33,Dalmatia,Delminium,,Tomislavgrad,,Tomislavgrad / Duvno / Zupanjac / Delminium,,17.2303272,43.7165551,,,https://pleiades.stoa.org/places/197244,www.trismegistos.org/place/29556
+34,Dalmatia,,,Hrvace,,Hrvace,Near Aequum,16.6189503,43.7559711,,,,www.trismegistos.org/place/29341
+35,Dalmatia,Municipium Magnum,,Ružić / Balijna Glavica,,Ruzic / Balijna Glavica / Municipium Magnum,,16.2663102,43.8199367,,,https://pleiades.stoa.org/places/197534,www.trismegistos.org/place/29343
+36,Dalmatia,Novae,,Runovići,,Runovici / Runovic / Novae,,17.2354538,43.38889,,,https://pleiades.stoa.org/places/197413,www.trismegistos.org/place/29454
+37,Dalmatia,Risinium,,Risan,,Risan / Risano / Risinium,,18.6955649,42.5149792,,,https://pleiades.stoa.org/places/197471,www.trismegistos.org/place/29617
+38,Dalmatia,Siculi,,Bijaći,,Veli Bijac / Bijaci / Bijaca / Siculi,,16.2982386,43.5555172,,,https://pleiades.stoa.org/places/197511,www.trismegistos.org/place/29385
+39,Dalmatia,Spalatum,,Split,,Split / Spalatum,,16.4399659,43.5116383,,,https://pleiades.stoa.org/places/197524,www.trismegistos.org/place/29361
+40,Dalmatia,Tragurium,,Trogir,,Trogir / Tragurium,,16.2499724,43.516687,,,https://pleiades.stoa.org/places/197555,www.trismegistos.org/place/29369
+41,Dalmatia,Asseria,,,,Asseria,,15.6690296,44.0099747,15.680565,44.0176335,https://pleiades.stoa.org/places/197145,www.trismegistos.org/place/28793
+42,Dalmatia,Asseria,,Benkovac,,Benkovac / Asseria,,15.6125528,44.0333509,15.680565,44.0176335,https://pleiades.stoa.org/places/197145,www.trismegistos.org/place/28793
+43,Dalmatia,Bigeste,,Veljaci,,Veljaci / Bigeste,,17.4433546,43.2362774,,,https://pleiades.stoa.org/places/197167,www.trismegistos.org/place/36073
+44,Dalmatia,Burnum,,Mokro Polje,,Mokro Polje / Burnum,Near Burnum,16.1106256,44.1009583,,,https://pleiades.stoa.org/places/197184,www.trismegistos.org/place/29390
+45,Dalmatia,Burnum,,Puljane,,Puljane / Pugliane / Burnum,Near Burnum,16.032173,43.9743322,,,https://pleiades.stoa.org/places/197184,www.trismegistos.org/place/29391
+46,Dalmatia,Burnum,,Strmca,,Strmca / Stermizza / Burnum,Near Burnum,14.1999864,45.8315229,,,https://pleiades.stoa.org/places/197184,www.trismegistos.org/place/29394
+47,Dalmatia,Curictae,,Krk,,"Krk, Otok / Curictae",,14.5496681,45.0901955,,,https://pleiades.stoa.org/places/197235,www.trismegistos.org/place/29317
+48,Dalmatia,Diluntum,,Stolac,,Dubrava / Diluntum,,17.958448,43.078729,,,https://pleiades.stoa.org/places/197247,www.trismegistos.org/place/29554
+49,Dalmatia,,,Doboj,,Doboj,,18.0847183,44.7313612,,,,www.trismegistos.org/place/29506
+50,Dalmatia,,,Dobropoljci,,Dobropoljci,,15.8108052,43.9936545,,,,www.trismegistos.org/place/36013
+51,Dalmatia,Colonia Metalla Domaviana / Domavia,,Srebrenica,Gradina,Gradina / Domavium,,19.36267,44.143981,15.680565,44.0176335,https://pleiades.stoa.org/places/207088,www.trismegistos.org/place/29549
+52,Dalmatia,Fulfinum,,Omišalj,,Omisalj / Fulfinum,,14.5575259,45.2120215,,,,www.trismegistos.org/place/29432
+53,Dalmatia,,,Gračac,,Gracac,,15.8465272,44.2985234,,,,www.trismegistos.org/place/29310
+54,Dalmatia,,,Gradcina,,Gradcina,Near Požega,17.7097222,45.2286111,,,,
+55,Dalmatia,Baloia,,Šipovo,Gromile,Gromile,,17.08308,44.28216,,,https://pleiades.stoa.org/places/197158,www.trismegistos.org/place/29548
+56,Dalmatia,,,Galovac,,Galovac / Iader,Near Iader,15.3944579,44.0724549,,,,www.trismegistos.org/place/29328
+57,Dalmatia,Issa,,Vis,,Vis / Issa,,16.1834976,43.0599322,,,https://pleiades.stoa.org/places/197329,www.trismegistos.org/place/29472
+58,Dalmatia,Nareste,,Jesenice,Krug,"Krug, Jesenice",Near Salona,16.6289431,43.4592662,,,,www.trismegistos.org/place/29359
+59,Dalmatia,Kapitul,,Knin,,Kapitul - Knin,,16.1984439,44.0312408,,,https://pleiades.stoa.org/places/197410,www.trismegistos.org/place/36085
+60,Dalmatia,,,Kosijerevo,,Kosijerevo,Near Anderva – Nikašić,18.4606607,42.7968403,,,,www.trismegistos.org/place/36101
+61,Dalmatia,,,Krinj,,Krinj,Near Aequum / Čitluk,16.644463,43.7451993,,,,www.trismegistos.org/place/36111
+62,Dalmatia,Promina,,Mratovo,,Mratovo / Burnum,Near Burnum. Across the River Krka,16.0454253,43.9559481,,,,www.trismegistos.org/place/29312
+63,Dalmatia,Colentum,,Murter,,Murter,Near Zadar,15.6085778,43.799601,,,https://pleiades.stoa.org/places/197219,www.trismegistos.org/place/29421
+64,Dalmatia,Narona,,Metković,,Metkovic / Narona,,17.6519631,43.0536158,,,https://pleiades.stoa.org/places/197400,www.trismegistos.org/place/16527
+65,Dalmatia,Oneum,,Omiš,,Omis / Almissa / Oneum / Onaeum,,16.6913309,43.4447124,,,https://pleiades.stoa.org/places/197419,www.trismegistos.org/place/29431
+66,Dalmatia,Pharus,,Hvar,,Hvar / Lesina / Pharia,,16.5564721,43.1739813,,,https://pleiades.stoa.org/places/197434,www.trismegistos.org/place/3585
+67,Dalmatia,,,Cres,Punta Kriza,Punta Kriza,Near Asporus,14.4929765,44.6382141,,,https://pleiades.stoa.org/places/197122,www.trismegistos.org/place/36203
+68,Dalmatia,Rider,,Danilo Gornje,,Danilo Gornje / Rider,Near Šibenik,16.0292749,43.706309,,,https://pleiades.stoa.org/places/197473,www.trismegistos.org/place/29458
+69,Dalmatia,,,Roški slap,,Roski slap,Between Scardona and Burnum ,15.9750672,43.903745,,,,www.trismegistos.org/place/29393
+70,Dalmatia,Salona,,Manastirine,,Manastirine / Salona,,16.4828374,43.5420376,,,,www.trismegistos.org/place/47092
+71,Dalmatia,Tarsatica,,Rijeka,,Trsat / Tersatto / Tarsatica,,14.464428,45.3308704,,,https://pleiades.stoa.org/places/197541,www.trismegistos.org/place/29399
+72,Dalmatia,Tragurium,,Seget Donji,,Seget Donji / Tragurium,,16.2272015,43.5179953,,,https://pleiades.stoa.org/places/197555,www.trismegistos.org/place/29372
+73,Dalmatia,,,Uzdolje,Čenići,Uzdolje,Between Ninia and Promona,16.1966494,43.9386349,,,,www.trismegistos.org/place/36265
+74,Dalmatia,Baloia,,Šipovo,Vaganj,Vagan,Vaganj is south of Baloia,17.1746449,44.1539086,,,https://pleiades.stoa.org/places/197158,www.trismegistos.org/place/36267
+75,Dalmatia,Varvaria,,Bribir / Bribirska Glavica,,Bribir / Bribirska Glavica / Varvaria,,15.8398106,43.9214921,,,https://pleiades.stoa.org/places/197574,www.trismegistos.org/place/11858
+76,Dalmatia,,,Velika Kladusa,,Velika Kladusa,East of Metulum,15.8070634,45.1854105,,,,www.trismegistos.org/place/29583

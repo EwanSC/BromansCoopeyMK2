@@ -113,7 +113,7 @@ MaterialID,ArtefactID,MonumentID,LocationID,Findspot,FindspotCertainty,FindspotC
 112,,112,,,,,42,100,,,NA,,,,,,http://db.edcs.eu/epigr/bilder.php?bilder.php?s_language=en&bild=PEC0009117
 113,,113,,,,,1,100,,,lapis,,,,,,
 114,,114,,,,,42,69,,,lapis,,,,,,
-115,,115,,,,,108,130,,,lapis,,,,,,http://db.edcs.eu/epigr/bilder.php?bilder.php?s_language=en&bild=$ILJug-03_01627_1.jpg;$ILJug-03_01627_2.jpg
+115,,115,,,,,108,130,,,lapis,"Sarajevo, Zem. Muz.",,,,,http://db.edcs.eu/epigr/bilder.php?bilder.php?s_language=en&bild=$ILJug-03_01627_1.jpg;$ILJug-03_01627_2.jpg
 116,,116,,,,,1,150,,,NA,,,,,,
 117,,117,,,,,71,100,,,lapis,,,,,,http://db.edcs.eu/epigr/bilder.php?bilder.php?s_language=en&bild=PH0012436;pp
 118,,118,,,,,1,42,,,lapis,,,,,,http://db.edcs.eu/epigr/bilder.php?bilder.php?s_language=en&bild=$Legio-VII_00032_1.jpg;$Legio-VII_00032_2.jpg;pp
@@ -247,7 +247,7 @@ MaterialID,ArtefactID,MonumentID,LocationID,Findspot,FindspotCertainty,FindspotC
 246,,246,,,,,1,100,,,lapis,,,,,,http://db.edcs.eu/epigr/bilder.php?bilder.php?s_language=en&bild=$Kurilic_00054.jpg;pp
 247,,247,,,,,1,100,,,lapis,,,,,,http://db.edcs.eu/epigr/bilder.php?bilder.php?s_language=en&bild=$PF_BAHD-1994-96-42a.jpg
 248,,248,,,,,9,69,,,NA,,,,,,http://db.edcs.eu/epigr/bilder.php?bilder.php?s_language=en&bild=pp
-249,,249,,,,,9,69,,,lapis,,,,,,http://db.edcs.eu/epigr/bilder.php?bilder.php?s_language=en&bild=$M_CIL_03_06418_1.jpg;$M_CIL_03_06418_2.jpg;pp
+249,,249,,Church St. Martin cemetery,,,9,69,,,lapis,"Zadar, Arh. Muz.",,,,,http://db.edcs.eu/epigr/bilder.php?bilder.php?s_language=en&bild=$M_CIL_03_06418_1.jpg;$M_CIL_03_06418_2.jpg;pp
 250,,250,,,,,1,150,,,lapis,,,,,,
 251,,251,,,,,101,130,,,lapis,,,,,,http://db.edcs.eu/epigr/bilder.php?bilder.php?s_language=en&bild=$CIL_03_09960.jpg
 252,,252,,,,,51,130,,,NA,,,,,,
